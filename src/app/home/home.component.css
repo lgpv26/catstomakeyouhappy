@@ -1,0 +1,11 @@
+section {
+	margin-top: 80px;
+}
+
+@media screen and (min-width: 860px) {
+	.content {
+		width: 860px;
+		margin: 0 auto;
+	}
+
+}

@@ -1,0 +1,39 @@
+.app-brand {
+    font-weight: bold;
+    letter-spacing: .1rem;
+}
+
+.paragraph {
+    margin-top: -10px;
+    display: block;
+    font-size: .8em;
+}
+
+.menu {
+    margin-top: 50px; 
+}
+
+.menu li {
+    transition: all .2s ease;
+    background: #fff;
+    font-size: 1.5em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    background: #ff066a;
+    color: white;
+}
+
+.active-li {
+    color: #ff066a;
+}
+
+.app-btn-open-menu {
+    transition: transform .3s ease;
+}
+
+.app-btn-open-menu:hover {
+    transform: scale(1.3)
+}

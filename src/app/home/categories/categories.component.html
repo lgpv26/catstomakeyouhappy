@@ -1,0 +1,20 @@
+<section class="p-2">
+    <nav style="margin-top: 80px;">
+        <h3>
+            Categories
+            <small class="text-muted">Choose a category</small>
+        </h3>
+        <form [formGroup]="form"> 
+            <select formControlName="category" class="form-control form-control-lg" (change)="getPhotosOfTheSelectedCategory(form.get('category').value)">
+                <option *ngFor="let category of categories" [ngValue]="category" >{{category.name.charAt(0).toUpperCase() + category.name.slice(1)}}</option>
+            </select>
+        </form>
+    </nav>
+    <div class="text-center">
+        <div class="mt-1" style="width: 100%;" *ngIf="photos">
+            <img *ngFor="let photo of photos" [src]="photo.url" class="card-img-top mt-2" alt="category cat {{categorySelected?.name}}">
+            <div #scroll id="scroll-reference" style="position: fixed;"></div>
+        </div>
+        <button type="button" class="btn app-button mt-3" style="" (click)="loadMoreCats(form.get('category').value)">More cats</button>
+    </div>
+</section>

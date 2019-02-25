@@ -1,0 +1,48 @@
+<header>
+    <nav class="fixed-top navbar navbar-ligth bg-white app-nav">
+        <div [routerLink]="['']" style="cursor: pointer">
+            <a [routerLink]="['']" class="navbar-brand app-brand" style="color: #ff006a">
+                CatsToMakeYouHappy
+            </a>
+            <p class="text-muted paragraph" >For you to forget that they ruled the world</p>
+        </div>
+        <app-menu #menu>
+            <ul class="list-unstyled menu" >
+                <li 
+                    [routerLink]="['']" 
+                    (click)="menu.toggle()"
+                    routerLinkActive="active-li"
+                    [routerLinkActiveOptions]="{exact: true}">
+                        <a>Home <small style="opacity: .8">/Cute random cats</small></a>
+                </li>
+                <li
+                    [routerLink]="['gifs']" 
+                    (click)="menu.toggle()"
+                    routerLinkActive="active-li">
+                    <a>Gifs <small style="opacity: .8" class="">/Cute cats animated gifs</small></a>
+                </li>
+                <li
+                    [routerLink]="['categories']" 
+                    (click)="menu.toggle()"
+                    routerLinkActive="active-li">
+                    <a>Categories <small style="opacity: .8" class="">/Cute cats with accessories</small></a>
+                 </li>
+                
+                <li 
+                    [routerLink]="['breeds']" 
+                    (click)="menu.toggle()"
+                    routerLinkActive="active-li">
+                        <a>Breeds <small style="opacity: .8">/Meet the Breeds of Cats</small></a>
+                </li>
+            </ul>
+        </app-menu>
+        <i tabindex="0" (keyup.space)="menu.toggle()" (click)="menu.toggle()" class="fa fa-bars mr-2 app-btn-open-menu" style="font-size: 1.5em; cursor: pointer"></i>
+    </nav>
+
+    <div class="fixed-top">
+        <app-loading></app-loading>
+    </div>
+    <div class="fixed-bottom">
+        <app-alert></app-alert>
+    </div>
+</header>

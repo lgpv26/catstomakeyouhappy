@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+.app-button {
+    background: #ff006a;;
+    border: 1px solid #ff006a;
+    color: white;
+}
+
+.app-button:hover {
+    background: white;
+    border: 1px solid #ff006a;
+    color: #ff006a;
+}
+
+.app-button-download {
+    position: absolute;
+    right: 0;
+    margin: 1em;
+    opacity: .5;
+}
+

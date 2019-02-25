@@ -1,0 +1,23 @@
+.rating-0 {
+    width: 0;
+}
+
+.rating-1 {
+    width: 20%;
+}
+
+.rating-2 {
+    width: 40%;
+}
+
+.rating-3 {
+    width: 60%
+}
+
+.rating-4 {
+    width: 80%;
+}
+
+.rating-5 {
+    width: 100%;
+}

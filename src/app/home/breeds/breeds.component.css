@@ -1,0 +1,28 @@
+.content {
+    height: 200px;
+    overflow: auto;
+}
+
+.flag-icon {
+    background-size: 100%;
+}
+
+.app-tag {
+    background: #d4d4d4;
+    padding: 1em;
+    width: auto;
+}
+
+.app-button-reload {
+    position: absolute;
+    right: 0;
+    margin: 1em;
+    box-shadow: 0 0 10px 1px #00000033;
+}
+
+@media screen and (min-width: 860px) {
+    section {
+        max-width: 860px;
+        margin: 0 auto;
+    }
+}
