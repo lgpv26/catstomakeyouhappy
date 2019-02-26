@@ -11,8 +11,8 @@
         </form>
     </nav>
     <div class="text-center">
-        <div class="mt-1" style="width: 100%;" *ngIf="photos">
-            <img *ngFor="let photo of photos" [src]="photo.url" class="card-img-top mt-2" alt="category cat {{categorySelected?.name}}">
+        <div class="mt-1" style="width: 100%;" *ngIf="photos && categorySelected">
+            <img *ngFor="let photo of photos" [src]="photo.url" class="card-img-top mt-2" alt="category cat {{categorySelected.name}}">
             <div #scroll id="scroll-reference" style="position: fixed;"></div>
         </div>
         <button type="button" class="btn app-button mt-3" style="" (click)="loadMoreCats(form.get('category').value)">More cats</button>

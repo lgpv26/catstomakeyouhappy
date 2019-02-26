@@ -1,7 +1,7 @@
 .menu-bar {
     position: fixed;
-    height: auto;
     width: 100%;
+    height: auto;
     padding: 1em;
     background-color: white;
     top: 0;
@@ -9,8 +9,6 @@
     z-index: 1;
     float: right;
     display: none;
-    overflow: hidden;
-    border-bottom: 5px solid#ff066a;
 }
 
 .active-menu .overlay {
@@ -30,6 +28,7 @@
 .active-menu .menu-bar {
     display: block;
     right: 0;
+    border-bottom: 5px solid#ff066a;
     animation: appear .2s forwards;
     overflow: auto;
 }
