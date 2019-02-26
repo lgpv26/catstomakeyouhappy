@@ -5,6 +5,7 @@ import { take, retry } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { AlertService } from '../shared/alert/alert.service';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
+import { Meta } from '@angular/platform-browser';
 
 declare var $: any
  
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy, DoCheck {
     constructor(
         private photoListService: PhotoListService,
         private router: Router,
-        private alertService: AlertService) {}
+        private alertService: AlertService) { }
 
     ngOnInit() {
         this.photoListService.listPhotos(9, 'Rand')
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     ngDoCheck() {
-        setTimeout(() => this.loadOnScroll(), 3000)
+        setTimeout(() => this.loadOnScroll(), 2000)
     }
 
     ngOnDestroy() {

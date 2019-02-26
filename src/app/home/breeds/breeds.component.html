@@ -1,5 +1,5 @@
 <section class="p-2">
-    <nav style="margin-top: 80px;">
+    <nav style="margin-top: 100px;">
         <h3>
             Breeds
             <small class="text-muted">Choose a breed</small>
@@ -17,128 +17,128 @@
                 <img *ngFor="let photo of photos" [src]="photo.url" class="card-img-top" alt="breed cat {{breedSelected?.name}}">
             -->
 
-            <ngb-carousel *ngIf="photos">
+            <ngb-carousel *ngIf="photos && breedSelected">
                 <ng-template ngbSlide *ngFor="let photo of photos">
-                    <img [src]="photo.url" alt="breed cat {{breedSelected?.name}}" style="width: 100%; ">
+                    <img [src]="photo.url" alt="breed cat {{breedSelected.name}}" style="width: 100%; ">
                 </ng-template>
             </ngb-carousel>
 
-            <div class="card-body">
-                <span class="flag-icon flag-icon-{{breedSelected?.country_code.toLowerCase()}}"></span>
+            <div class="card-body" *ngIf="breedSelected">
+                <span class="flag-icon flag-icon-{{breedSelected.country_code.toLowerCase()}}"></span>
                 <small>
-                    {{breedSelected?.origin}}
+                    {{breedSelected.origin}}
                 </small>
-                <h5 class="card-title" style="color: #ff006a">{{breedSelected?.name}}
+                <h5 class="card-title" style="color: #ff006a">{{breedSelected.name}}
                     <small>
-                        <p class="text-muted" style="font-size: .8em">{{breedSelected?.life_span}} years / {{breedSelected?.weight['metric']}} kg</p>
+                        <p class="text-muted" style="font-size: .8em">{{breedSelected.life_span}} years / {{breedSelected.weight['metric']}} kg</p>
                     </small>
                 </h5>
                 
-                <p class="card-text">{{breedSelected?.description}}</p>
-                <p class="text-lowercase text-muted" style="font-size: .8em"><i>{{breedSelected?.temperament}}</i></p>
+                <p class="card-text">{{breedSelected.description}}</p>
+                <p class="text-lowercase text-muted" style="font-size: .8em"><i>{{breedSelected.temperament}}</i></p>
             </div>
-            <div class="content">
+            <div class="content" *ngIf="breedSelected">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         Affection Level 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.affection_level)}}">
-                                {{breedSelected?.affection_level}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.affection_level)}}">
+                                {{breedSelected.affection_level}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Adaptability 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.adaptability)}}">
-                                {{breedSelected?.adaptability}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.adaptability)}}">
+                                {{breedSelected.adaptability}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Child Friendly 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.child_friendly)}}">
-                                {{breedSelected?.child_friendly}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.child_friendly)}}">
+                                {{breedSelected.child_friendly}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Dog Friendly 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.dog_friendly)}}">
-                                {{breedSelected?.dog_friendly}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.dog_friendly)}}">
+                                {{breedSelected.dog_friendly}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Energy Level 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.energy_level)}}">
-                                {{breedSelected?.energy_level}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.energy_level)}}">
+                                {{breedSelected.energy_level}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Grooming 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.grooming)}}">
-                                {{breedSelected?.grooming}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.grooming)}}">
+                                {{breedSelected.grooming}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Health Issues 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.health_issues)}}">
-                                {{breedSelected?.health_issues}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.health_issues)}}">
+                                {{breedSelected.health_issues}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Intelligence 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.intelligence)}}">
-                                {{breedSelected?.intelligence}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.intelligence)}}">
+                                {{breedSelected.intelligence}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Shedding Level 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.shedding_level)}}">
-                                {{breedSelected?.shedding_level}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.shedding_level)}}">
+                                {{breedSelected.shedding_level}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Social Needs 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.social_needs)}}">
-                                {{breedSelected?.social_needs}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.social_needs)}}">
+                                {{breedSelected.social_needs}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Stranger Friendly 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.stranger_friendly)}}">
-                                {{breedSelected?.stranger_friendly}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.stranger_friendly)}}">
+                                {{breedSelected.stranger_friendly}}
                             </app-rating>
                         </div>
                     </li>
                     <li class="list-group-item">
                         Vocalisation 
                         <div style="float: right; width: 25%">
-                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected?.vocalisation)}}">
-                                {{breedSelected?.vocalisation}}
+                            <app-rating ratingLevel="{{confereRatingLevel(breedSelected.vocalisation)}}">
+                                {{breedSelected.vocalisation}}
                             </app-rating>
                         </div>
                     </li>
                 </ul>
             </div>
-            <div class="card-body">
-                <a [href]="breedSelected?.wikipedia_url" class="card-link" style="color: #ff006a">Wikipedia</a>
+            <div class="card-body" *ngIf="breedSelected">
+                <a [href]="breedSelected.wikipedia_url" target="_blank" class="card-link" style="color: #ff006a">Wikipedia</a>
             </div>
         </div>
     </div>

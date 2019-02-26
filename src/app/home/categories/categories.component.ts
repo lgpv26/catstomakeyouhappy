@@ -34,7 +34,7 @@ export class CategoriesComponent implements OnInit, OnDestroy, DoCheck{
     }
     
     ngDoCheck() {
-        setTimeout(() => this.loadMoreCatsOnScroll(), 3000)
+        setTimeout(() => this.loadMoreCatsOnScroll(), 2000)
     }
 
     ngOnDestroy() {}

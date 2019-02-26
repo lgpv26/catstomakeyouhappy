@@ -2,6 +2,11 @@
     <div class="menu-bar">
         <i tabindex="0" class="fa fa-window-close app-btn-close-menu" (keyup.space)="toggle()" (click)="toggle()"></i>
         <ng-content></ng-content>
+        <div class="text-center">
+            <small class="text-muted" style="opacity: .5">
+                Developed by <a href="https://www.linkedin.com/in/luiz-gustavo-vinholi/" target="_blank">Luiz Gustavo Vinholi</a> - API used <a href="https://thecatapi.com/" class="text-muted" target="_blank">TheCatAPI</a>
+            </small>
+        </div>
     </div>
     <div class="overlay" (click)="toggle()"></div>
 </div>

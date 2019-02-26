@@ -1,9 +1,17 @@
-<section class="text-center p-2">
-    <div class="content">
-        <img *ngFor="let photo of photoList" class="card-img-top mt-2" [src]="photo.url" alt="">
-        <div #scroll id="scroll-reference" style="position: fixed;"></div>
+<section class="p-2">
+    <div>
+        <h1>
+            OH MY GOD!
+            <small class="text-muted" style="display: block">So many cute f#@%$! cats to die for love. Enjoy!</small>
+        </h1>
     </div>
-    <div class="mt-3 mb-2">
-        <button class="btn app-button" (click)="load()">More cats</button>
+    <div class="text-center">
+        <div class="content">
+            <img *ngFor="let photo of photoList" class="card-img-top mt-2" [src]="photo.url" alt="">
+            <div #scroll id="scroll-reference" style="position: fixed;"></div>
+        </div>
+        <div class="mt-3 mb-2">
+            <button class="btn app-button" (click)="load()">More cats</button>
+        </div>
     </div>
 </section>

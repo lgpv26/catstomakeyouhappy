@@ -1,8 +1,13 @@
 section {
-	margin-top: 80px;
+	margin: 0 auto;
+	margin-top: 100px;
 }
 
 @media screen and (min-width: 860px) {
+	section {
+		width: 860px;
+	}
+
 	.content {
 		width: 860px;
 		margin: 0 auto;

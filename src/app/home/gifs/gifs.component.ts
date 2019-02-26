@@ -4,6 +4,7 @@ import { GifsService } from './gifs.service';
 import { PhotoModel } from '../photo.model';
 import { retry, debounceTime } from 'rxjs/operators';
 import { AlertService } from 'src/app/shared/alert/alert.service';
+import { Meta } from '@angular/platform-browser';
 
 declare var $: any
 
@@ -25,7 +26,7 @@ export class GifsComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     ngDoCheck() {
-        setTimeout(() => this.loadImagesOnScroll(), 3000)
+        setTimeout(() => this.loadImagesOnScroll(), 2000)
     }
     
     ngOnDestroy(): void {}
