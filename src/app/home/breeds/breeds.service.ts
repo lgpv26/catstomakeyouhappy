@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BreedsPhotoModel } from './breeds-photo.model';
 import { PhotoModel } from '../photo.model';
+import { Cacheable } from 'ngx-cacheable'
 
 const API_URL = 'https://api.thecatapi.com/v1/breeds'
 const API = 'https://api.thecatapi.com/v1/images/search'
@@ -10,6 +11,7 @@ export class BreedsService {
 
     constructor(private http: HttpClient) {}
 
+    @Cacheable()
     public getAllBreeds() {
         return this.http
             .get<BreedsPhotoModel[]>(`${API_URL}`, {
@@ -17,6 +19,7 @@ export class BreedsService {
             })
     }
 
+    @Cacheable()
     public getBreeds(id: string) {
         return this.http
             .get<PhotoModel[]>(API, {

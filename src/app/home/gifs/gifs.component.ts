@@ -4,9 +4,6 @@ import { GifsService } from './gifs.service';
 import { PhotoModel } from '../photo.model';
 import { retry, debounceTime } from 'rxjs/operators';
 import { AlertService } from 'src/app/shared/alert/alert.service';
-import { Meta } from '@angular/platform-browser';
-
-declare var $: any
 
 @AutoUnsubscribe()
 @Component({
@@ -48,7 +45,7 @@ export class GifsComponent implements OnInit, OnDestroy, DoCheck {
     }
     
     public loadImagesOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < $(window).scrollTop()) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
             this.loadMoreImages()
         }
     }

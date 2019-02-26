@@ -8,8 +8,6 @@ import { AlertService } from 'src/app/shared/alert/alert.service';
 import { retry } from 'rxjs/operators';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-declare var $: any
-
 @AutoUnsubscribe()
 @Component({
     templateUrl: './categories.component.html',
@@ -75,7 +73,7 @@ export class CategoriesComponent implements OnInit, OnDestroy, DoCheck{
     }
 
     public loadMoreCatsOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < $(window).scrollTop()) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
             this.loadMoreCats(this.form.get('category').value)
         }
     }

@@ -5,9 +5,6 @@ import { take, retry } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { AlertService } from '../shared/alert/alert.service';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
-import { Meta } from '@angular/platform-browser';
-
-declare var $: any
  
 @AutoUnsubscribe()
 @Component({
@@ -61,7 +58,7 @@ export class HomeComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     public loadOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < $(window).scrollTop()) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
             this.load()
         }
     }
