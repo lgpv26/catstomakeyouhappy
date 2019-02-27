@@ -16,8 +16,8 @@ import {NgModule} from '@angular/core';
  
             ServerModule,
             NoopAnimationsModule,
+            ServerTransferStateModule,
             ModuleMapLoaderModule,
-            ServerTransferStateModule, // comment
         ]
     })
     export class AppServerModule {}

@@ -1,5 +1,9 @@
 {
   "universal": {
+    "--": [
+      "[--http",
+      "false]"
+    ],
     "project": "CatsToMakeYouHappy",
     "skipInstall": false,
     "directory": ".",

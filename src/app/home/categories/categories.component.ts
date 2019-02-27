@@ -1,4 +1,3 @@
-import { WINDOW } from '@ng-toolkit/universal';
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DoCheck , Inject} from '@angular/core';
 import { CategoriesService } from './categories.service';
 import { CategoriesPhotoModel } from './categories-photo.model';
@@ -8,6 +7,7 @@ import { Router } from '@angular/router';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { retry } from 'rxjs/operators';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 
 @AutoUnsubscribe()
 @Component({
@@ -26,14 +26,14 @@ export class CategoriesComponent implements OnInit, OnDestroy, DoCheck{
         category: new FormControl()
     })
 
-    constructor(@Inject(WINDOW) private window: Window, private categoriesService: CategoriesService, private router: Router, private alertService: AlertService) {}
+    constructor(private categoriesService: CategoriesService, private router: Router, private alertService: AlertService, private platformDetector: PlatformDetectorService) {}
 
     ngOnInit() {
         if(!this.photos.length) this.getAllCategoriesToList()
     }
     
     ngDoCheck() {
-        setTimeout(() => this.loadMoreCatsOnScroll(), 2000)
+        this.platformDetector.isPlatformBrowser() && setTimeout(() => this.loadMoreCatsOnScroll(), 2000)
     }
 
     ngOnDestroy() {}
@@ -74,7 +74,7 @@ export class CategoriesComponent implements OnInit, OnDestroy, DoCheck{
     }
 
     public loadMoreCatsOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < this.window.scrollY) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
             this.loadMoreCats(this.form.get('category').value)
         }
     }

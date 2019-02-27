@@ -1,11 +1,11 @@
-import { WINDOW } from '@ng-toolkit/universal';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, DoCheck , Inject} from '@angular/core';
 import { PhotoListService } from './photo-list.service';
 import { PhotoModel } from './photo.model';
-import { take, retry } from 'rxjs/operators'
+import { retry } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { AlertService } from '../shared/alert/alert.service';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
+import { PlatformDetectorService } from '../core/platform-detector/platform-detector.service';
  
 @AutoUnsubscribe()
 @Component({
@@ -18,10 +18,11 @@ export class HomeComponent implements OnInit, OnDestroy, DoCheck {
     public photoList: PhotoModel[] = []
     @ViewChild('scroll') public scroll: ElementRef
 
-    constructor(@Inject(WINDOW) private window: Window, 
+    constructor(
         private photoListService: PhotoListService,
         private router: Router,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        private platformDetector: PlatformDetectorService) { }
 
     ngOnInit() {
         this.photoListService.listPhotos(9, 'Rand')
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     ngDoCheck() {
-        setTimeout(() => this.loadOnScroll(), 2000)
+        this.platformDetector.isPlatformBrowser() && setTimeout(() => this.loadOnScroll(), 2000)
     }
 
     ngOnDestroy() {
@@ -59,7 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     public loadOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < this.window.scrollY) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
             this.load()
         }
     }

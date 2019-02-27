@@ -12,7 +12,6 @@ import { NgModule } from '@angular/core';
  BrowserTransferStateModule,
  
  AppModule,
- 
         ]
     })
     export class AppBrowserModule {}

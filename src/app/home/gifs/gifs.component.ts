@@ -1,10 +1,10 @@
-import { WINDOW } from '@ng-toolkit/universal';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, DoCheck , Inject} from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { GifsService } from './gifs.service';
 import { PhotoModel } from '../photo.model';
 import { retry, debounceTime } from 'rxjs/operators';
 import { AlertService } from 'src/app/shared/alert/alert.service';
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 
 @AutoUnsubscribe()
 @Component({
@@ -15,16 +15,15 @@ export class GifsComponent implements OnInit, OnDestroy, DoCheck {
 
     public photos: PhotoModel[] = []
     @ViewChild('scroll') public scroll: ElementRef<HTMLDivElement>
-    @ViewChild('img') public img: ElementRef<HTMLSourceElement>
 
-    constructor(@Inject(WINDOW) private window: Window, private gifsService: GifsService, private alertService: AlertService) {}
+    constructor(private gifsService: GifsService, private alertService: AlertService, private platformDetector: PlatformDetectorService) {}
 
     ngOnInit(): void {
         if(!this.photos.length) this.getImagesFromService()
     }
 
     ngDoCheck() {
-        setTimeout(() => this.loadImagesOnScroll(), 2000)
+        this.platformDetector.isPlatformBrowser() && setTimeout(() => this.loadImagesOnScroll(), 2000)
     }
     
     ngOnDestroy(): void {}
@@ -46,7 +45,7 @@ export class GifsComponent implements OnInit, OnDestroy, DoCheck {
     }
     
     public loadImagesOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < this.window.scrollY) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
             this.loadMoreImages()
         }
     }
