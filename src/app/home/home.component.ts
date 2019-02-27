@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, DoCheck } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, DoCheck , Inject} from '@angular/core';
 import { PhotoListService } from './photo-list.service';
 import { PhotoModel } from './photo.model';
 import { take, retry } from 'rxjs/operators'
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy, DoCheck {
     public photoList: PhotoModel[] = []
     @ViewChild('scroll') public scroll: ElementRef
 
-    constructor(
+    constructor(@Inject(WINDOW) private window: Window, 
         private photoListService: PhotoListService,
         private router: Router,
         private alertService: AlertService) { }
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     public loadOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < this.window.scrollY) {
             this.load()
         }
     }

@@ -1,3 +1,7 @@
+import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,8 +16,14 @@ import { CoreModule } from './core/core.module';
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
+  imports:[
+  CommonModule,
+  NgtUniversalModule,
+
+  TransferHttpCacheModule,
+  HttpClientModule,
+ 
+    
     HomeModule,
     BreedsModule,
     AppRoutingModule,
@@ -21,6 +31,5 @@ import { CoreModule } from './core/core.module';
     ErrorsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }

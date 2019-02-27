@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DoCheck } from "@angular/core";
+import { WINDOW } from '@ng-toolkit/universal';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DoCheck , Inject} from '@angular/core';
 import { CategoriesService } from './categories.service';
 import { CategoriesPhotoModel } from './categories-photo.model';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -25,7 +26,7 @@ export class CategoriesComponent implements OnInit, OnDestroy, DoCheck{
         category: new FormControl()
     })
 
-    constructor(private categoriesService: CategoriesService, private router: Router, private alertService: AlertService) {}
+    constructor(@Inject(WINDOW) private window: Window, private categoriesService: CategoriesService, private router: Router, private alertService: AlertService) {}
 
     ngOnInit() {
         if(!this.photos.length) this.getAllCategoriesToList()
@@ -73,7 +74,7 @@ export class CategoriesComponent implements OnInit, OnDestroy, DoCheck{
     }
 
     public loadMoreCatsOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < this.window.scrollY) {
             this.loadMoreCats(this.form.get('category').value)
         }
     }

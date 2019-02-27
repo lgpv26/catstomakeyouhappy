@@ -1,0 +1,8 @@
+{
+  "universal": {
+    "project": "CatsToMakeYouHappy",
+    "skipInstall": false,
+    "directory": ".",
+    "http": true
+  }
+}

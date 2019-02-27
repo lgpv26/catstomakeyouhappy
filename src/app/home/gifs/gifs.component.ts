@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, DoCheck } from "@angular/core";
+import { WINDOW } from '@ng-toolkit/universal';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, DoCheck , Inject} from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { GifsService } from './gifs.service';
 import { PhotoModel } from '../photo.model';
@@ -16,7 +17,7 @@ export class GifsComponent implements OnInit, OnDestroy, DoCheck {
     @ViewChild('scroll') public scroll: ElementRef<HTMLDivElement>
     @ViewChild('img') public img: ElementRef<HTMLSourceElement>
 
-    constructor(private gifsService: GifsService, private alertService: AlertService) {}
+    constructor(@Inject(WINDOW) private window: Window, private gifsService: GifsService, private alertService: AlertService) {}
 
     ngOnInit(): void {
         if(!this.photos.length) this.getImagesFromService()
@@ -45,7 +46,7 @@ export class GifsComponent implements OnInit, OnDestroy, DoCheck {
     }
     
     public loadImagesOnScroll() {
-        if(this.scroll.nativeElement.offsetTop / 1.2 < window.scrollY) {
+        if(this.scroll.nativeElement.offsetTop / 1.2 < this.window.scrollY) {
             this.loadMoreImages()
         }
     }
