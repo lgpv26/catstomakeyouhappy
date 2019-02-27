@@ -363,12 +363,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-@ng-toolkit/universal
-MIT
-
-@nguniversal/common
-MIT
-
 zone.js
 MIT
 The MIT License
